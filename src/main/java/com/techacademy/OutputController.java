@@ -1,15 +1,19 @@
 package com.techacademy;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class OutputController {
 
-    @GetMapping("/output")
-    public String postOutput(Model model) {
-        model.addAttribute("id", "previous");
+    @PostMapping("/output")
+    public String postForm(@RequestParam(name = "val",required = false)String val,Model model) {
+        model.addAttribute("val",val);
+        // output.htmlに画面遷移
         return "output";
     }
+
 }
